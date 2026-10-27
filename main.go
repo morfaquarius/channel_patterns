@@ -33,8 +33,9 @@ func Worker(jobs <-chan Job, results chan<- Result, wg *sync.WaitGroup) {
 }
 
 func main() {
-	jobs := make(chan Job, 10)
-	results := make(chan Result, 10)
+	numJobs := 10
+	jobs := make(chan Job, numJobs)
+	results := make(chan Result, numJobs)
 	var wg sync.WaitGroup
 	numWorkers := 5
 	// Создание воркеров
@@ -43,7 +44,6 @@ func main() {
 		go Worker(jobs, results, &wg)
 	}
 
-	numJobs := 10
 	for j := 1; j <= numJobs; j++ {
 		jobs <- Job{ID: j, URL: "http://example.com/" + strconv.Itoa(j)}
 	}
