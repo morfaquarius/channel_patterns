@@ -61,7 +61,7 @@ func main() {
 
 	fmt.Println("Статистика обработки:")
 	for _, stat := range statistics {
-		fmt.Printf("URL: %s, Статус: %s, Время выполнения: %v\n", stat.Job.URL, stat.Status, stat.Duration)
+		fmt.Printf("ID задания: %d, URL: %s, Статус: %s, Время выполнения: %v\n", stat.Job.ID, stat.Job.URL, stat.Status, stat.Duration)
 	}
 
 	countSuccess := 0
